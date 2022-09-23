@@ -12,13 +12,14 @@ public class SetterDemoApp {
 		// retrieve object from Spring object container
 
 		CricketCoach myCoach = context.getBean("myCricketCoach", CricketCoach.class);
+		CricketCoach myOtherCoach = context.getBean("myCricketCoach", CricketCoach.class);
 
 		// use the objects
-		System.out.println(myCoach.getWorkout());
-		System.out.println(myCoach.getDailyFortune());
-		System.out.println(myCoach.getEmail());
-		System.out.println(myCoach.getTeam());
-		
+//		System.out.println(myCoach.getWorkout());
+//		System.out.println(myCoach.getDailyFortune());
+//		System.out.println(myCoach.getEmail());
+//		System.out.println(myCoach.getTeam());
+		System.out.println(myCoach +"/"+myOtherCoach);
 
 		// close the Spring context
 		context.close();

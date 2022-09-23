@@ -1,25 +1,34 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <beans xmlns="http://www.springframework.org/schema/beans"
-    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
-    xmlns:context="http://www.springframework.org/schema/context"
-    xsi:schemaLocation="http://www.springframework.org/schema/beans
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
     http://www.springframework.org/schema/beans/spring-beans.xsd
     http://www.springframework.org/schema/context
     http://www.springframework.org/schema/context/spring-context.xsd">
 
 	<!-- cargar el fichero de propiedades -->
-	<context:property-placeholder location="classpath:sport.properties"/>
+	<context:property-placeholder
+		location="classpath:sport.properties" />
 
-    <!-- Define your beans here -->
-    <bean id="myFortune" class="springDemoOne.PesimisticFortuneService"></bean>
-    <bean id="myCoach" class="springDemoOne.FootballCoach">
-    	<constructor-arg ref="myFortune"/>
-    </bean>
-    <bean id="myCricketCoach" class="springDemoOne.CricketCoach">
-    	<property name="fortuneService" ref="myFortune"></property>
-    	<property name="email" value="${sport.email}"></property>
-    	<property name="team" value="${sport.team}"></property>
+	<!-- Bean custom processor to handle calling destroy methods on prototype scoped beans -->
+        <bean id="customProcessor"
+    		class="springDemoOne.MyCustomBeanProcessor">
    	</bean>
+
+	<!-- Define your beans here -->
+	<bean id="myFortune"
+		class="springDemoOne.PesimisticFortuneService"></bean>
+	<bean id="myCoach" class="springDemoOne.FootballCoach">
+		<constructor-arg ref="myFortune" />
+	</bean>
+	<bean id="myCricketCoach" class="springDemoOne.CricketCoach"
+		scope="prototype" init-method="onInstantiation"
+		>
+		<property name="fortuneService" ref="myFortune"></property>
+		<property name="email" value="${sport.email}"></property>
+		<property name="team" value="${sport.team}"></property>
+	</bean>
 </beans>
 
 

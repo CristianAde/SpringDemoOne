@@ -1,6 +1,8 @@
 package springDemoOne;
 
-public class CricketCoach implements Coach {
+import org.springframework.beans.factory.DisposableBean;
+
+public class CricketCoach implements Coach, DisposableBean {
 
 	FortuneService fortuneService = null;
 	String email = "";
@@ -44,6 +46,17 @@ public class CricketCoach implements Coach {
 		System.out.println("Inside setTeam");
 	}
 
-	
+	public void onInstantiation() {
+		System.out.println("Inside onInstantiation");
+	}
+	public void onDestroy() {
+		System.out.println("Inside onDestroy");
+	}
+
+	@Override
+	public void destroy() throws Exception {
+		System.out.println("Inside destroy");
+		
+	}
 	
 }

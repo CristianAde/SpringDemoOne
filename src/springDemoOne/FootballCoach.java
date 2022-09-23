@@ -17,4 +17,15 @@ public class FootballCoach implements Coach {
 		return "Football: " + fortuneService.getFortune();
 	}
 
+	//add init method
+	public void inicio() {
+		System.out.println("Entro en inicio");
+	}
+	
+	
+	//add cleanup method
+	public void fin() {
+		System.out.println("Entro en fin");
+	}
+
 }
