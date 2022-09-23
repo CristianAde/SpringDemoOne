@@ -14,10 +14,10 @@ public class HelloSpringApp {
 		// use the methods from the bean
 		System.out.println(thisCoach.getWorkout());
 		System.out.println(thisCoach.getDailyFortune());
-		
+
 		// close the context
 		context.close();
-		
+
 	}
 
 }

@@ -6,7 +6,7 @@ public class UseCoach {
 
 		Coach coach = new BaseballCoach();
 		System.out.println(coach.getWorkout());
-		
+
 	}
 
 }

@@ -1,16 +1,16 @@
 package springDemoOne;
 
 public class BaseballCoach implements Coach {
-	
+
 	private FortuneService fortuneService;
-	
+
 	public BaseballCoach() {
 	}
 
 	public BaseballCoach(FortuneService fortuneService) {
 		this.fortuneService = fortuneService;
 	}
-	
+
 	@Override
 	public String getWorkout() {
 		return "Do 2 homeruns!";
@@ -20,5 +20,5 @@ public class BaseballCoach implements Coach {
 	public String getDailyFortune() {
 		return "Baseball: " + fortuneService.getFortune();
 	}
-	
+
 }
