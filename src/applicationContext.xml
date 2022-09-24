@@ -11,10 +11,10 @@
 	<context:property-placeholder
 		location="classpath:sport.properties" />
 
-	<!-- Bean custom processor to handle calling destroy methods on prototype scoped beans -->
-        <bean id="customProcessor"
-    		class="springDemoOne.MyCustomBeanProcessor">
-   	</bean>
+	<!-- Bean custom processor to handle calling destroy methods on prototype 
+		scoped beans -->
+	<bean id="customProcessor" class="springDemoOne.MyCustomBeanProcessor"> 
+		</bean>
 
 	<!-- Define your beans here -->
 	<bean id="myFortune"
@@ -22,9 +22,11 @@
 	<bean id="myCoach" class="springDemoOne.FootballCoach">
 		<constructor-arg ref="myFortune" />
 	</bean>
+	<!-- destroy-method only works for singleton. for prototype use customProcessor 
+		bean and overriden destroy() method -->
 	<bean id="myCricketCoach" class="springDemoOne.CricketCoach"
 		scope="prototype" init-method="onInstantiation"
-		>
+		destroy-method="onDestroy">
 		<property name="fortuneService" ref="myFortune"></property>
 		<property name="email" value="${sport.email}"></property>
 		<property name="team" value="${sport.team}"></property>
